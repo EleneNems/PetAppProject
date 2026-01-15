@@ -1,0 +1,144 @@
+<div class="login-container">
+  <div class="login-background">
+    <div class="floating-pet pet-1">🐶</div>
+    <div class="floating-pet pet-2">🐱</div>
+    <div class="floating-pet pet-3">🐰</div>
+    <div class="floating-pet pet-4">🦊</div>
+  </div>
+
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-big">
+        <img src="navbar/paw.png" alt="" class="logo-icon-big">
+        <h1>PetApp</h1>
+      </div>
+      <p class="tagline">Your virtual pet companion awaits!</p>
+    </div>
+
+    <div class="tab-switcher">
+      <button
+        class="tab-btn"
+        [class.active]="isLoginMode"
+        (click)="toggleMode()">
+        Login
+      </button>
+      <button
+        class="tab-btn"
+        [class.active]="!isLoginMode"
+        (click)="toggleMode()">
+        Register
+      </button>
+    </div>
+
+    <form
+      *ngIf="isLoginMode && loginForm"
+      [formGroup]="loginForm"
+      (ngSubmit)="onLoginSubmit()"
+      class="auth-form">
+
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input
+          type="email"
+          id="login-email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.error]="loginEmail?.invalid && loginEmail?.touched">
+        <span class="error-message" *ngIf="loginEmail?.invalid && loginEmail?.touched">
+          <span *ngIf="loginEmail?.errors?.['required']">Email is required</span>
+          <span *ngIf="loginEmail?.errors?.['email']">Please enter a valid email</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input
+          type="password"
+          id="login-password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.error]="loginPassword?.invalid && loginPassword?.touched">
+        <span class="error-message" *ngIf="loginPassword?.invalid && loginPassword?.touched">
+          <span *ngIf="loginPassword?.errors?.['required']">Password is required</span>
+          <span *ngIf="loginPassword?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+        <span *ngIf="!loading">Login</span>
+        <span *ngIf="loading" class="loading-spinner">⏳ Logging in...</span>
+      </button>
+    </form>
+
+    <form
+      *ngIf="!isLoginMode && registerForm"
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegisterSubmit()"
+      class="auth-form">
+
+      <div class="form-group">
+        <label for="register-username">Username</label>
+        <input
+          type="text"
+          id="register-username"
+          formControlName="username"
+          placeholder="Choose a username"
+          [class.error]="registerUsername?.invalid && registerUsername?.touched">
+        <span class="error-message" *ngIf="registerUsername?.invalid && registerUsername?.touched">
+          <span *ngIf="registerUsername?.errors?.['required']">Username is required</span>
+          <span *ngIf="registerUsername?.errors?.['minlength']">Username must be at least 3 characters</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="register-email">Email</label>
+        <input
+          type="email"
+          id="register-email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.error]="registerEmail?.invalid && registerEmail?.touched">
+        <span class="error-message" *ngIf="registerEmail?.invalid && registerEmail?.touched">
+          <span *ngIf="registerEmail?.errors?.['required']">Email is required</span>
+          <span *ngIf="registerEmail?.errors?.['email']">Please enter a valid email</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="register-password">Password</label>
+        <input
+          type="password"
+          id="register-password"
+          formControlName="password"
+          placeholder="Create a password"
+          [class.error]="registerPassword?.invalid && registerPassword?.touched">
+        <span class="error-message" *ngIf="registerPassword?.invalid && registerPassword?.touched">
+          <span *ngIf="registerPassword?.errors?.['required']">Password is required</span>
+          <span *ngIf="registerPassword?.errors?.['minlength']">Password must be at least 6 characters</span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+          [class.error]="registerConfirmPassword?.invalid && registerConfirmPassword?.touched">
+        <span class="error-message" *ngIf="registerConfirmPassword?.invalid && registerConfirmPassword?.touched">
+          <span *ngIf="registerConfirmPassword?.errors?.['required']">Please confirm your password</span>
+        </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+        <span *ngIf="!loading">Create Account</span>
+        <span *ngIf="loading" class="loading-spinner">⏳ Creating account...</span>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>Demo credentials: any email & password (min 6 chars)</p>
+    </div>
+  </div>
+</div>
