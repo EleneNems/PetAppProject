@@ -4,17 +4,21 @@ import { Router } from '@angular/router'
 import { PetService } from '../../services/pet.service'
 import { Pet } from '../../models/pet.model'
 import { AuthService } from '../../services/auth.service'
+import { LoadingSpinner } from '../../loading-spinner/loading-spinner'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingSpinner],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrls: ['./home.css']
 })
 export class Home implements OnInit {
-
   pets: Pet[] = []
+  loading = false
+  showConfirm = false
+  selectedPet: Pet | null = null
+  successMessage = ''
 
   constructor(
     private petService: PetService,
@@ -23,20 +27,54 @@ export class Home implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.petService.getAvailablePets().subscribe(pets => {
-      this.pets = pets
+    this.loadAvailablePets()
+  }
+
+  loadAvailablePets() {
+    this.loading = true
+    this.petService.getAvailablePets().subscribe({
+      next: pets => {
+        this.pets = pets
+        this.loading = false
+      },
+      error: () => {
+        this.loading = false
+      }
     })
   }
 
-  adopt(pet: Pet) {
-    if (!this.auth.currentUserValue) {
-      this.router.navigate(['/login'], {
-        queryParams: { returnUrl: '/' }
-      })
+  confirmAdopt(pet: Pet) {
+    if (!this.auth.isAuthenticated()) {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: '/' } })
       return
     }
 
-    this.petService.adoptPet(pet)
-    this.router.navigate(['/my-pet'])
+    this.selectedPet = pet
+    this.showConfirm = true
+  }
+
+  adoptPet() {
+    if (!this.selectedPet) return
+
+    this.petService.adoptPet(this.selectedPet.id).subscribe({
+      next: () => {
+        this.successMessage = `✨ ${this.selectedPet?.name} has joined your family!`
+        this.showConfirm = false
+        this.selectedPet = null
+
+        setTimeout(() => {
+          this.router.navigate(['/my-pet'])
+        }, 1200)
+      },
+      error: () => {
+        this.showConfirm = false
+        this.selectedPet = null
+      }
+    })
+  }
+
+  cancelAdopt() {
+    this.showConfirm = false
+    this.selectedPet = null
   }
 }

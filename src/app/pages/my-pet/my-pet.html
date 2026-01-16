@@ -1,46 +1,54 @@
-<div class="container">
+<div class="container" *ngIf="pets.length">
   <div class="page-header">
     <img src="navbar/paw.png" alt="">
-    <p>Take care of your virtual companion!</p>
+    <p>Take care of your virtual companions!</p>
   </div>
 
   <div class="pet-container">
-    <div class="card pet-display">
+    <div class="card pet-display" *ngFor="let pet of pets">
       <div class="pet-avatar">
-        <span class="pet-emoji">🐶</span>
+        <img [src]="pet.image" [alt]="pet.name" class="pet-img">
       </div>
-      <h2>Buddy</h2>
-      <p class="pet-description">Your loyal companion</p>
-      
+
+      <h2>{{ pet.name }}</h2>
+      <p class="pet-description">{{ pet.species }}</p>
+
       <div class="pet-stats-quick">
         <div class="stat-item">
           <span class="stat-icon">❤️</span>
           <div class="stat-bar">
-            <div class="stat-fill" style="width: 80%"></div>
+            <div class="stat-fill" [style.width.%]="pet.stats.health"></div>
           </div>
-          <span class="stat-value">80%</span>
+          <span class="stat-value">{{ pet.stats.health }}%</span>
         </div>
+
         <div class="stat-item">
           <span class="stat-icon">😊</span>
           <div class="stat-bar">
-            <div class="stat-fill happiness" style="width: 65%"></div>
+            <div class="stat-fill happiness" [style.width.%]="pet.stats.happiness"></div>
           </div>
-          <span class="stat-value">65%</span>
+          <span class="stat-value">{{ pet.stats.happiness }}%</span>
         </div>
+
         <div class="stat-item">
           <span class="stat-icon">🍖</span>
           <div class="stat-bar">
-            <div class="stat-fill hunger" style="width: 45%"></div>
+            <div class="stat-fill hunger" [style.width.%]="pet.stats.hunger"></div>
           </div>
-          <span class="stat-value">45%</span>
+          <span class="stat-value">{{ pet.stats.hunger }}%</span>
         </div>
       </div>
 
       <div class="action-buttons">
-        <button class="btn btn-primary">🍖 Feed</button>
-        <button class="btn btn-secondary">🎾 Play</button>
-        <button class="btn btn-accent">💤 Rest</button>
+        <button class="btn btn-primary" (click)="feed(pet)">🍖 Feed</button>
+        <button class="btn btn-secondary" (click)="play(pet)">🎾 Play</button>
+        <button class="btn btn-accent" (click)="rest(pet)">💤 Rest</button>
       </div>
     </div>
   </div>
 </div>
+
+<app-loading-spinner
+  [loading]="loading"
+  message="Loading your pets..."
+></app-loading-spinner>

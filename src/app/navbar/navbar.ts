@@ -1,8 +1,9 @@
-import { Component, OnDestroy } from '@angular/core'
-import { RouterLink, RouterLinkActive } from '@angular/router'
-import { CommonModule } from '@angular/common'
-import { AuthService } from '../services/auth.service'
-import { Subscription } from 'rxjs'
+import { Component, OnDestroy } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -12,26 +13,23 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./navbar.css']
 })
 export class Navbar implements OnDestroy {
-  isMenuOpen = false
-  isLoggedIn = false
 
-  private authSub!: Subscription
+  isLoggedIn = false;
+  private authSub: Subscription;
 
   constructor(private authService: AuthService) {
-    this.authSub = this.authService.currentUser.subscribe(user => {
-      this.isLoggedIn = !!user
-    })
+    this.authSub = this.authService.currentUser$.subscribe(
+      (user: User | null) => {
+        this.isLoggedIn = !!user;
+      }
+    );
   }
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen
+  logout(): void {
+    this.authService.logout();
   }
 
-  closeMenu() {
-    this.isMenuOpen = false
-  }
-
-  ngOnDestroy() {
-    this.authSub.unsubscribe()
+  ngOnDestroy(): void {
+    this.authSub.unsubscribe();
   }
 }

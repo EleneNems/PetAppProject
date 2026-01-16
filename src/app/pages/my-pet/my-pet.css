@@ -3,7 +3,7 @@
   margin-bottom: 48px;
 }
 
-.page-header img{
+.page-header img {
   width: 70px;
   margin-bottom: 8px;
 }
@@ -14,10 +14,11 @@
 }
 
 .pet-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 40px;
+  justify-items: center;
+  align-items: stretch;
 }
 
 .pet-display {
@@ -25,15 +26,26 @@
   width: 100%;
   text-align: center;
   padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 600px;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .pet-avatar {
-  margin-bottom: 24px;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 24px auto; 
+  display: block; 
 }
 
-.pet-emoji {
-  font-size: 120px;
-  display: inline-block;
+.pet-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
   animation: float 3s ease-in-out infinite;
   filter: drop-shadow(0 8px 24px rgba(255, 143, 171, 0.3));
 }
@@ -83,11 +95,19 @@
 }
 
 .stat-fill.happiness {
-  background: linear-gradient(90deg, var(--secondary-cyan), var(--primary-pink));
+  background: linear-gradient(
+    90deg,
+    var(--secondary-cyan),
+    var(--primary-pink)
+  );
 }
 
 .stat-fill.hunger {
-  background: linear-gradient(90deg, var(--accent-yellow), #FFA500);
+  background: linear-gradient(
+    90deg,
+    var(--accent-yellow),
+    #FFA500
+  );
 }
 
 .stat-value {
@@ -110,12 +130,12 @@
 }
 
 @media (max-width: 768px) {
-  .pet-display {
-    padding: 32px 24px;
+  .pet-container {
+    grid-template-columns: 1fr;
   }
 
-  .pet-emoji {
-    font-size: 80px;
+  .pet-display {
+    padding: 32px 24px;
   }
 
   .action-buttons .btn {

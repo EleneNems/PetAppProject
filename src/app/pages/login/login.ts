@@ -1,13 +1,14 @@
-import { Component } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { ActivatedRoute, Router, RouterModule } from '@angular/router'
-import { AuthService } from '../../services/auth.service'
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { LoadingSpinner } from '../../loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, LoadingSpinner],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
@@ -28,22 +29,21 @@ export class Login {
   ) {}
 
   ngOnInit(): void {
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-pet';
 
+    // Login form
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
+    // Register form
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
-    }, { 
-      validators: this.passwordMatchValidator 
-    });
+    }, { validators: this.passwordMatchValidator });
   }
 
   passwordMatchValidator(group: FormGroup) {
@@ -52,27 +52,18 @@ export class Login {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  get lf() {
-    return this.loginForm.controls;
-  }
-
-  get rf() {
-    return this.registerForm.controls;
-  }
-
   toggleMode(): void {
     this.isLoginMode = !this.isLoginMode;
     this.errorMessage = '';
     this.submitted = false;
   }
 
+  // ---------- LOGIN ----------
   onLoginSubmit(): void {
     this.submitted = true;
     this.errorMessage = '';
 
-    if (this.loginForm.invalid) {
-      return;
-    }
+    if (this.loginForm.invalid) return;
 
     this.loading = true;
 
@@ -89,52 +80,42 @@ export class Login {
     });
   }
 
+  // ---------- REGISTER ----------
   onRegisterSubmit(): void {
     this.submitted = true;
     this.errorMessage = '';
 
-    if (this.registerForm.invalid) {
-      return;
-    }
+    if (this.registerForm.invalid) return;
 
     this.loading = true;
 
-    const { username, email, password } = this.registerForm.value;
+    const { username, email, password, confirmPassword } = this.registerForm.value;
 
-    this.authService.register({ username, email, password }).subscribe({
+    // Pass correct type matching RegisterData interface
+    this.authService.register({
+      name: username,
+      email,
+      password,
+      password_confirmation: confirmPassword
+    }).subscribe({
       next: (user) => {
         this.loading = false;
         this.router.navigate([this.returnUrl]);
       },
       error: (error) => {
         this.loading = false;
-        this.errorMessage = 'Registration failed. Please try again.';
+        this.errorMessage = 'Registration failed. Please check your inputs.';
         console.error('Register error:', error);
       }
     });
   }
 
-  get loginEmail() {
-  return this.loginForm.get('email')
-}
+  // ---------- GETTERS ----------
+  get loginEmail() { return this.loginForm.get('email'); }
+  get loginPassword() { return this.loginForm.get('password'); }
 
-  get loginPassword() {
-    return this.loginForm.get('password')
-  }
-
-  get registerUsername() {
-    return this.registerForm.get('username')
-  }
-
-  get registerEmail() {
-    return this.registerForm.get('email')
-  }
-
-  get registerPassword() {
-    return this.registerForm.get('password')
-  }
-
-  get registerConfirmPassword() {
-    return this.registerForm.get('confirmPassword')
-  }
+  get registerUsername() { return this.registerForm.get('username'); }
+  get registerEmail() { return this.registerForm.get('email'); }
+  get registerPassword() { return this.registerForm.get('password'); }
+  get registerConfirmPassword() { return this.registerForm.get('confirmPassword'); }
 }

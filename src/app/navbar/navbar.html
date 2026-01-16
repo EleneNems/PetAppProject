@@ -15,7 +15,7 @@
           <span class="nav-icon">
             <img src="navbar/pets icon.png" alt="my pet" />
           </span>
-          My pet 
+          My pets
         </a>
       </li>
       <li>
@@ -50,56 +50,8 @@
         <span class="coin-amount">1,250</span>
       </button>
 
-      <a routerLink="/login" class="btn btn-primary btn-sm" *ngIf="!isLoggedIn"> Login </a>
+      <button routerLink="/login" class="btn btn-primary btn-sm" *ngIf="!isLoggedIn">Login</button>
+      <button class="btn btn-primary btn-sm" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
     </div>
-
-    <button class="mobile-menu-toggle" (click)="toggleMenu()">
-      <span class="hamburger" [class.active]="isMenuOpen"></span>
-    </button>
-  </div>
-
-  <div class="mobile-menu" [class.open]="isMenuOpen">
-    <ul class="mobile-menu-list">
-      <ng-container *ngIf="isLoggedIn">
-        <li>
-          <a routerLink="/my-pet" class="nav-link" (click)="closeMenu()">
-            <span class="nav-icon">
-              <img src="assets/icons/dog.png" />
-            </span>
-            My Pet
-          </a>
-        </li>
-        <li>
-          <a routerLink="/pet-store" class="nav-link" (click)="closeMenu()">
-            <span class="nav-icon">
-              <img src="assets/icons/store.png" />
-            </span>
-            Pet Store
-          </a>
-        </li>
-        <li>
-          <a routerLink="/pet-stats" class="nav-link" (click)="closeMenu()">
-            <span class="nav-icon">
-              <img src="assets/icons/stats.png" />
-            </span>
-            Pet Stats
-          </a>
-        </li>
-        <li>
-          <a routerLink="/admin" class="nav-link" (click)="closeMenu()">
-            <span class="nav-icon">
-              <img src="assets/icons/settings.png" />
-            </span>
-            Admin
-          </a>
-        </li>
-      </ng-container>
-
-      <li class="mobile-divider"></li>
-
-      <li *ngIf="!isLoggedIn">
-        <a routerLink="/login" class="btn btn-primary btn-block" (click)="closeMenu()"> Login </a>
-      </li>
-    </ul>
   </div>
 </nav>
