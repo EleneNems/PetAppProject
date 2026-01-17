@@ -13,8 +13,12 @@ import { LoadingSpinner } from '../../loading-spinner/loading-spinner';
   styleUrls: ['./my-pet.css']
 })
 export class MyPet implements OnInit {
-  pets: any[] = []; 
+
+  pets: any[] = [];
+  coins = 0;
   loading = false;
+
+  readonly ACTION_COST = 5;
 
   constructor(
     private petService: PetService,
@@ -27,6 +31,7 @@ export class MyPet implements OnInit {
       this.router.navigate(['/login'], { queryParams: { returnUrl: '/my-pet' } });
       return;
     }
+
     this.loadMyPet();
   }
 
@@ -34,29 +39,31 @@ export class MyPet implements OnInit {
     this.loading = true;
 
     this.petService.getMyPet().subscribe({
-      next: (data: any[]) => {
-        this.pets = data; 
+      next: (res) => {
+        this.pets = res.pets;
+        this.coins = res.coins;
         this.loading = false;
       },
-      error: (err) => {
+      error: err => {
         console.error('Failed to load pets', err);
         this.loading = false;
       }
     });
   }
 
+  canPerform(statValue: number): boolean {
+    return statValue < 100 && this.coins >= this.ACTION_COST;
+  }
+
   feed(pet: any): void {
-    console.log('Feed clicked for', pet.name);
-    // call backend later
+    this.petService.feedPet(pet.id).subscribe(() => this.loadMyPet());
   }
 
   play(pet: any): void {
-    console.log('Play clicked for', pet.name);
-    // call backend later
+    this.petService.playPet(pet.id).subscribe(() => this.loadMyPet());
   }
 
   rest(pet: any): void {
-    console.log('Rest clicked for', pet.name);
-    // call backend later
+    this.petService.restPet(pet.id).subscribe(() => this.loadMyPet());
   }
 }

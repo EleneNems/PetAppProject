@@ -142,3 +142,16 @@
     min-width: 100px;
   }
 }
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.8);
+  transform: none;
+}
+
+.no-coins {
+  margin-top: 16px;
+  color: #ff9aa2;
+  font-weight: 600;
+}

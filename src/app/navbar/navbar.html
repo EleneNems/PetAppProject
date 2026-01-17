@@ -47,7 +47,7 @@
     <div class="navbar-actions">
       <button class="btn-icon coins-display" *ngIf="isLoggedIn">
         <span class="coin-icon">🪙</span>
-        <span class="coin-amount">1,250</span>
+        <span class="coin-amount">{{ coins }}</span>
       </button>
 
       <button routerLink="/login" class="btn btn-primary btn-sm" *ngIf="!isLoggedIn">Login</button>

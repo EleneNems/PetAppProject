@@ -15,12 +15,15 @@ import { User } from '../models/user.model';
 export class Navbar implements OnDestroy {
 
   isLoggedIn = false;
+  coins = 0;
+
   private authSub: Subscription;
 
   constructor(private authService: AuthService) {
     this.authSub = this.authService.currentUser$.subscribe(
       (user: User | null) => {
         this.isLoggedIn = !!user;
+        this.coins = user?.coins ?? 0;
       }
     );
   }

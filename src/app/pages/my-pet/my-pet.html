@@ -1,11 +1,12 @@
 <div class="container" *ngIf="pets.length">
+
   <div class="page-header">
     <img src="navbar/paw.png" alt="">
-    <p>Take care of your virtual companions!</p>
   </div>
 
   <div class="pet-container">
     <div class="card pet-display" *ngFor="let pet of pets">
+
       <div class="pet-avatar">
         <img [src]="pet.image" [alt]="pet.name" class="pet-img">
       </div>
@@ -14,41 +15,65 @@
       <p class="pet-description">{{ pet.species }}</p>
 
       <div class="pet-stats-quick">
+
         <div class="stat-item">
-          <span class="stat-icon">❤️</span>
+          ❤️
           <div class="stat-bar">
-            <div class="stat-fill" [style.width.%]="pet.stats.health"></div>
+            <div class="stat-fill health" [style.width.%]="pet.stats.health"></div>
           </div>
-          <span class="stat-value">{{ pet.stats.health }}%</span>
+          <span>{{ pet.stats.health }}%</span>
         </div>
 
         <div class="stat-item">
-          <span class="stat-icon">😊</span>
+          😊
           <div class="stat-bar">
             <div class="stat-fill happiness" [style.width.%]="pet.stats.happiness"></div>
           </div>
-          <span class="stat-value">{{ pet.stats.happiness }}%</span>
+          <span>{{ pet.stats.happiness }}%</span>
         </div>
 
         <div class="stat-item">
-          <span class="stat-icon">🍖</span>
+          ⚡
           <div class="stat-bar">
-            <div class="stat-fill hunger" [style.width.%]="pet.stats.hunger"></div>
+            <div class="stat-fill energy" [style.width.%]="pet.stats.energy"></div>
           </div>
-          <span class="stat-value">{{ pet.stats.hunger }}%</span>
+          <span>{{ pet.stats.energy }}%</span>
         </div>
+
       </div>
 
       <div class="action-buttons">
-        <button class="btn btn-primary" (click)="feed(pet)">🍖 Feed</button>
-        <button class="btn btn-secondary" (click)="play(pet)">🎾 Play</button>
-        <button class="btn btn-accent" (click)="rest(pet)">💤 Rest</button>
+        <button
+          class="btn btn-primary"
+          [disabled]="!canPerform(pet.stats.health)"
+          (click)="feed(pet)">
+          🍖 Feed (-5)
+        </button>
+
+        <button
+          class="btn btn-secondary"
+          [disabled]="!canPerform(pet.stats.happiness)"
+          (click)="play(pet)">
+          🎾 Play (-5)
+        </button>
+
+        <button
+          class="btn btn-accent"
+          [disabled]="!canPerform(pet.stats.energy)"
+          (click)="rest(pet)">
+          💤 Rest (-5)
+        </button>
       </div>
+
+      <p class="no-coins" *ngIf="coins < 5">
+        Not enough coins
+      </p>
+
     </div>
   </div>
 </div>
 
 <app-loading-spinner
   [loading]="loading"
-  message="Loading your pets..."
-></app-loading-spinner>
+  message="Loading your pets...">
+</app-loading-spinner>

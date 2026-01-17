@@ -94,4 +94,15 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
+  
+  updateCoins(coins: number): void {
+    const user = this.currentUserSubject.value;
+    if (!user) return;
+
+    const updatedUser = { ...user, coins };
+
+    this.currentUserSubject.next(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+  }
+
 }
