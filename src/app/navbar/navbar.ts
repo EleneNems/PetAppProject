@@ -12,9 +12,11 @@ import { User } from '../models/user.model';
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
+
 export class Navbar implements OnDestroy {
 
   isLoggedIn = false;
+  isAdmin = false;
   coins = 0;
 
   private authSub: Subscription;
@@ -23,6 +25,7 @@ export class Navbar implements OnDestroy {
     this.authSub = this.authService.currentUser$.subscribe(
       (user: User | null) => {
         this.isLoggedIn = !!user;
+        this.isAdmin = user?.role === 'admin';
         this.coins = user?.coins ?? 0;
       }
     );

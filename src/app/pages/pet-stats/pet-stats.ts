@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { LoadingSpinner } from '../../loading-spinner/loading-spinner';
 @Component({
   selector: 'app-pet-stats',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingSpinner],
   templateUrl: './pet-stats.html',
   styleUrl: './pet-stats.css'
 })

@@ -19,11 +19,11 @@
         </a>
       </li>
       <li>
-        <a routerLink="/pet-store" routerLinkActive="active" class="nav-link">
+        <a routerLink="/pet-activities" routerLinkActive="active" class="nav-link">
           <span class="nav-icon">
             <img src="navbar/store icon.png" alt="my store" />
           </span>
-          Pet Store
+          Pet Activities
         </a>
       </li>
       <li>
@@ -34,10 +34,10 @@
           Pet Stats
         </a>
       </li>
-      <li>
+      <li *ngIf="isAdmin">
         <a routerLink="/admin" routerLinkActive="active" class="nav-link">
           <span class="nav-icon">
-            <img src="navbar/settings icon.png" alt="my pet" />
+            <img src="navbar/settings icon.png" alt="admin" />
           </span>
           Admin
         </a>

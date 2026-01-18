@@ -76,4 +76,17 @@ export class PetService {
         tap(res => this.auth.updateCoins(res.coins))
       );
   }
+
+  completeActivity(activity: string) {
+    return this.http
+      .post<any>(
+        `${this.apiUrl}/activities/complete`,
+        { activity },
+        this.authHeaders()
+      )
+      .pipe(
+        tap(res => this.auth.updateCoins(res.coins))
+      );
+  }
+
 }

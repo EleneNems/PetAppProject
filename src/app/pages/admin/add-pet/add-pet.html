@@ -1,0 +1,16 @@
+<h2>🐾 Add a New Pet</h2>
+
+<form (ngSubmit)="submitPet()" [formGroup]="petForm" enctype="multipart/form-data">
+  <label>Pet Name:</label>
+  <input formControlName="name" placeholder="Enter pet name" />
+
+  <label>Species:</label>
+  <input formControlName="species" placeholder="Enter species" />
+
+  <label>Image:</label>
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <button type="submit" [disabled]="!petForm.valid || !selectedFile">Upload Pet</button>
+</form>
+
+<p *ngIf="message">{{ message }}</p>

@@ -30,7 +30,7 @@ export class AdminGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/my-pet']);
+    this.router.navigate(['/']);
     return false;
   }
 }

@@ -1,0 +1,201 @@
+<div class="activity-overlay" *ngIf="isWorking">
+  <div class="activity-box" [ngClass]="currentActivity + '-overlay'">
+    <div class="working-animation">
+      <div class="pet-working">
+        <img [src]="getActivityImage()" [alt]="'Working: ' + currentActivity" class="working-pet" />
+        <div class="sparkle sparkle-1">✨</div>
+        <div class="sparkle sparkle-2">✨</div>
+        <div class="sparkle sparkle-3">✨</div>
+        <div class="sparkle sparkle-4">✨</div>
+        <div class="progress-ring">
+          <svg class="progress-svg" width="200" height="200">
+            <circle class="progress-circle-bg" cx="100" cy="100" r="90"></circle>
+            <circle class="progress-circle" cx="100" cy="100" r="90"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <p>Your pet is busy...</p>
+    <div class="dots-loading">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="deco-animals">
+    <svg class="deco-bunny" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="65" rx="25" ry="30" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="35" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="65" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <circle cx="45" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+      <circle cx="55" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-cat" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="28" ry="25" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 25 45 L 35 25 L 45 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 75 45 L 65 25 L 55 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <circle cx="42" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+      <circle cx="58" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-dog" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="28" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="30" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="70" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <circle cx="43" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+      <circle cx="57" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <div class="page-header">
+    <div class="header-icon-wrapper">
+      <img src="navbar/store icon.png" alt="Activities" />
+    </div>
+    <h1 class="page-title">Activities</h1>
+    <p>Help your pet and earn coins</p>
+    
+    <div class="subtitle-section">
+      <div class="subtitle-line"></div>
+      <p class="subtitle-text">Choose an activity to keep your pet happy and healthy</p>
+      <div class="subtitle-line"></div>
+    </div>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+          <path d="M 15 20 L 18 23 L 25 16" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Quick Tasks</h4>
+        <p>Complete in seconds</p>
+      </div>
+    </div>
+    
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+          <circle cx="20" cy="20" r="8" fill="var(--primary-pink)" opacity="0.3"/>
+          <circle cx="20" cy="12" r="3" fill="var(--primary-pink)"/>
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Earn Rewards</h4>
+        <p>Get coins for each task</p>
+      </div>
+    </div>
+    
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 20 8 L 25 18 L 35 18 L 27 25 L 30 35 L 20 28 L 10 35 L 13 25 L 5 18 L 15 18 Z" fill="none" stroke="var(--accent-yellow)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Boost Stats</h4>
+        <p>Improve pet happiness</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="store-grid">
+
+    <div class="card store-item">
+      <div class="card-accent clean-accent"></div>
+
+      <div class="item-image">
+        <div class="image-glow clean-glow"></div>
+        <img src="activities/cleaning.png" alt="Clean habitat" />
+      </div>
+
+      <div class="item-content" style="flex-grow:1; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h3>Clean Habitat</h3>
+          <p>Keep your pet's environment tidy and comfortable.</p>
+        </div>
+        <div class="item-footer">
+          <div class="reward"><span class="coin-amount">+10 coins</span></div>
+          <button class="btn btn-primary btn-sm" [disabled]="isWorking" (click)="doActivity('clean')">
+            {{ isWorking && currentActivity === 'clean' ? 'Working...' : 'Do Activity' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card store-item">
+      <div class="card-accent groom-accent"></div>
+
+      <div class="item-image">
+        <div class="image-glow groom-glow"></div>
+        <img src="activities/grooming.png" alt="Groom pet" />
+      </div>
+
+      <div class="item-content" style="flex-grow:1; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h3>Groom Pet</h3>
+          <p>Brush and care for your pet's appearance.</p>
+        </div>
+        <div class="item-footer">
+          <div class="reward"><span class="coin-amount">+8 coins</span></div>
+          <button class="btn btn-primary btn-sm" [disabled]="isWorking" (click)="doActivity('groom')">
+            {{ isWorking && currentActivity === 'groom' ? 'Working...' : 'Do Activity' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card store-item">
+      <div class="card-accent training-accent"></div>
+
+      <div class="item-image">
+        <div class="image-glow training-glow"></div>
+        <img src="activities/training.png" alt="Training" />
+      </div>
+
+      <div class="item-content" style="flex-grow:1; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <h3>Training Session</h3>
+          <p>Teach your pet basic skills and discipline.</p>
+        </div>
+        <div class="item-footer">
+          <div class="reward"><span class="coin-amount">+15 coins</span></div>
+          <button class="btn btn-primary btn-sm" [disabled]="isWorking" (click)="doActivity('train')">
+            {{ isWorking && currentActivity === 'train' ? 'Working...' : 'Do Activity' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tips-section">
+    <div class="tips-header">
+      <div class="tips-decoration"></div>
+      <h3>Activity Tips</h3>
+      <div class="tips-decoration"></div>
+    </div>
+    
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-number">01</div>
+        <p>Activities restore your pet's stats and keep them happy throughout the day</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">02</div>
+        <p>Each activity takes 5 seconds to complete and rewards you with coins</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">03</div>
+        <p>Regular activities help level up your pet faster and unlock achievements</p>
+      </div>
+    </div>
+  </div>
+</div>

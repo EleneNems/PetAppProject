@@ -1,13 +1,116 @@
+<app-loading-spinner [loading]="loading" message="Loading Stats..."></app-loading-spinner>
+
 <div class="container" *ngIf="!loading">
+  <div class="deco-animals">
+    <svg class="deco-bunny" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="65" rx="25" ry="30" fill="var(--primary-pink)" opacity="0.15" />
+      <ellipse cx="35" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15" />
+      <ellipse cx="65" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15" />
+      <circle cx="45" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2" />
+      <circle cx="55" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2" />
+    </svg>
+
+    <svg class="deco-cat" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="28" ry="25" fill="var(--secondary-cyan)" opacity="0.15" />
+      <path d="M 25 45 L 35 25 L 45 45 Z" fill="var(--secondary-cyan)" opacity="0.15" />
+      <path d="M 75 45 L 65 25 L 55 45 Z" fill="var(--secondary-cyan)" opacity="0.15" />
+      <circle cx="42" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2" />
+      <circle cx="58" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2" />
+    </svg>
+
+    <svg class="deco-dog" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="28" fill="var(--accent-yellow)" opacity="0.15" />
+      <ellipse cx="30" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15" />
+      <ellipse cx="70" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15" />
+      <circle cx="43" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2" />
+      <circle cx="57" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2" />
+    </svg>
+  </div>
 
   <div class="page-header">
-    <img src="navbar/stats icon.png" alt="">
+    <div class="header-icon-wrapper">
+      <img src="navbar/stats icon.png" alt="" />
+    </div>
+    <h1 class="gradient-text">Pet Statistics</h1>
     <p>Track your pet's progress and achievements</p>
+
+    <div class="subtitle-section">
+      <div class="subtitle-line"></div>
+      <p class="subtitle-text">Monitor health, happiness, energy & level</p>
+      <div class="subtitle-line"></div>
+    </div>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M 20 10 L 23 17 L 30 17 L 24 22 L 27 29 L 20 24 L 13 29 L 16 22 L 10 17 L 17 17 Z"
+            fill="none"
+            stroke="var(--primary-pink)"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Real-Time Stats</h4>
+        <p>Live updates on progress</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <rect
+            x="8"
+            y="12"
+            width="24"
+            height="20"
+            rx="2"
+            fill="none"
+            stroke="var(--secondary-cyan)"
+            stroke-width="2"
+          />
+          <line x1="8" y1="18" x2="32" y2="18" stroke="var(--secondary-cyan)" stroke-width="2" />
+          <line x1="15" y1="24" x2="25" y2="24" stroke="var(--secondary-cyan)" stroke-width="2" />
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Track Progress</h4>
+        <p>Visual stat indicators</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon-wrapper">
+        <svg class="info-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle
+            cx="20"
+            cy="20"
+            r="15"
+            fill="none"
+            stroke="var(--accent-yellow)"
+            stroke-width="2"
+          />
+          <path
+            d="M 20 10 L 20 20 L 27 20"
+            fill="none"
+            stroke="var(--accent-yellow)"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+      <div class="info-content">
+        <h4>Level System</h4>
+        <p>XP-based progression</p>
+      </div>
+    </div>
   </div>
 
   <div class="stats-layout">
-
     <div class="card stat-card">
+      <div class="card-accent health-accent"></div>
       <span class="stat-icon-large">❤️</span>
       <h3>Health</h3>
       <div class="stat-value-large">{{ stats.health }}%</div>
@@ -18,6 +121,7 @@
     </div>
 
     <div class="card stat-card">
+      <div class="card-accent happiness-accent"></div>
       <span class="stat-icon-large">😊</span>
       <h3>Happiness</h3>
       <div class="stat-value-large">{{ stats.happiness }}%</div>
@@ -28,6 +132,7 @@
     </div>
 
     <div class="card stat-card">
+      <div class="card-accent energy-accent"></div>
       <span class="stat-icon-large">⚡</span>
       <h3>Energy</h3>
       <div class="stat-value-large">{{ stats.energy }}%</div>
@@ -38,21 +143,27 @@
     </div>
 
     <div class="card stat-card">
+      <div class="card-accent level-accent"></div>
       <span class="stat-icon-large">🎯</span>
       <h3>Level</h3>
       <div class="stat-value-large">{{ stats.level }}</div>
       <div class="stat-bar-large">
         <div class="stat-fill-large level" [style.width.%]="levelProgress()"></div>
       </div>
-      <p class="stat-description">
-        {{ stats.nextLevelXp }} XP to next level
-      </p>
+      <p class="stat-description">{{ stats.nextLevelXp }} XP to next level</p>
     </div>
-
   </div>
 
   <div class="achievements-section">
-    <h2>🏆 Achievements</h2>
+    <div class="section-header">
+      <div class="header-decoration"></div>
+      <h2>🏆 Achievements</h2>
+      <div class="header-decoration"></div>
+    </div>
+
+    <div class="achievement-intro">
+      <p>Complete activities and reach milestones to unlock special achievements</p>
+    </div>
 
     <div class="achievements-grid">
       <div
@@ -61,9 +172,40 @@
         [class.unlocked]="a.unlocked"
         [class.locked]="!a.unlocked"
       >
+        <div class="achievement-glow"></div>
         <div class="achievement-icon">{{ a.icon }}</div>
         <h4>{{ a.title }}</h4>
         <p>{{ a.desc }}</p>
+        <div class="unlock-badge" *ngIf="a.unlocked">✓</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <div class="tips-header">
+      <div class="tips-decoration"></div>
+      <h3>Stat Guide</h3>
+      <div class="tips-decoration"></div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-number">01</div>
+        <p><strong>Health:</strong> Maintained by feeding and caring for your pet regularly</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">02</div>
+        <p><strong>Happiness:</strong> Increases when you play with and groom your pet</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">03</div>
+        <p>
+          <strong>Energy:</strong> Restored through rest and proper nutrition throughout the day
+        </p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">04</div>
+        <p><strong>Level:</strong> Gain XP by completing activities to unlock new features</p>
       </div>
     </div>
   </div>

@@ -102,7 +102,7 @@ export class AuthService {
     const updatedUser = { ...user, coins };
 
     this.currentUserSubject.next(updatedUser);
-    localStorage.setItem('user', JSON.stringify(updatedUser));
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
   }
 
 }

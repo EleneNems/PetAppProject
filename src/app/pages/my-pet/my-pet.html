@@ -1,13 +1,119 @@
 <div class="container" *ngIf="pets.length">
+  <div class="deco-animals">
+    <svg class="deco-bunny" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="65" rx="25" ry="30" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="35" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="65" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <circle cx="45" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+      <circle cx="55" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-cat" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="28" ry="25" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 25 45 L 35 25 L 45 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 75 45 L 65 25 L 55 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <circle cx="42" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+      <circle cx="58" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-dog" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="28" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="30" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="70" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <circle cx="43" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+      <circle cx="57" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+    </svg>
+  </div>
 
   <div class="page-header">
-    <img src="navbar/paw.png" alt="">
+    <div class="header-icon-wrapper">
+      <img src="navbar/paw.png" alt="">
+    </div>
+    <h1 class="page-title">My Pets</h1>
+    <p>Care for your companions and watch them thrive</p>
+    
+    <div class="subtitle-section">
+      <div class="subtitle-line"></div>
+      <p class="subtitle-text">Keep them happy, healthy & energized</p>
+      <div class="subtitle-line"></div>
+    </div>
+  </div>
+
+  <div class="care-guide">
+    <div class="guide-header">
+      <div class="guide-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="25" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+          <path d="M 30 15 L 30 30 L 40 30" fill="none" stroke="var(--primary-pink)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="30" cy="30" r="3" fill="var(--primary-pink)"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Daily Care Routine</h3>
+        <p>Essential activities to keep your pets at their best</p>
+      </div>
+    </div>
+    
+    <div class="guide-grid">
+      <div class="guide-item">
+        <div class="guide-item-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="20" fill="var(--primary-pink)" opacity="0.2"/>
+            <path d="M 15 25 L 22 32 L 35 19" fill="none" stroke="var(--primary-pink)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Feed Regularly</h4>
+        <p>Keep health levels high with consistent feeding. Costs 5 coins per meal.</p>
+      </div>
+      
+      <div class="guide-item">
+        <div class="guide-item-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="20" fill="var(--secondary-cyan)" opacity="0.2"/>
+            <circle cx="25" cy="25" r="12" fill="none" stroke="var(--secondary-cyan)" stroke-width="3"/>
+            <circle cx="25" cy="18" r="3" fill="var(--secondary-cyan)"/>
+          </svg>
+        </div>
+        <h4>Play Together</h4>
+        <p>Boost happiness through interactive play sessions. Costs 5 coins per game.</p>
+      </div>
+      
+      <div class="guide-item">
+        <div class="guide-item-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="20" fill="var(--accent-yellow)" opacity="0.2"/>
+            <path d="M 18 28 Q 25 22 32 28" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="20" cy="22" r="2" fill="var(--accent-yellow)"/>
+            <circle cx="30" cy="22" r="2" fill="var(--accent-yellow)"/>
+          </svg>
+        </div>
+        <h4>Rest Time</h4>
+        <p>Restore energy with proper rest periods. Costs 5 coins to ensure quality sleep.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pet-section">
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">
+        <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 12 20 L 12 15 Q 12 10 17 10 L 23 10 Q 28 10 28 15 L 28 20" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+          <ellipse cx="20" cy="25" rx="10" ry="8" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+          <circle cx="15" cy="24" r="1.5" fill="var(--primary-pink)"/>
+          <circle cx="25" cy="24" r="1.5" fill="var(--primary-pink)"/>
+        </svg>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+    
+    <h2 class="section-title">Your Companions</h2>
   </div>
 
   <div class="pet-container">
     <div class="card pet-display" *ngFor="let pet of pets">
-
       <div class="pet-avatar">
+        <div class="avatar-glow"></div>
         <img [src]="pet.image" [alt]="pet.name" class="pet-img">
       </div>
 
@@ -17,27 +123,27 @@
       <div class="pet-stats-quick">
 
         <div class="stat-item">
-          ❤️
+          <span class="stat-emoji">❤️</span>
           <div class="stat-bar">
             <div class="stat-fill health" [style.width.%]="pet.stats.health"></div>
           </div>
-          <span>{{ pet.stats.health }}%</span>
+          <span class="stat-value">{{ pet.stats.health }}%</span>
         </div>
 
         <div class="stat-item">
-          😊
+          <span class="stat-emoji">😊</span>
           <div class="stat-bar">
             <div class="stat-fill happiness" [style.width.%]="pet.stats.happiness"></div>
           </div>
-          <span>{{ pet.stats.happiness }}%</span>
+          <span class="stat-value">{{ pet.stats.happiness }}%</span>
         </div>
 
         <div class="stat-item">
-          ⚡
+          <span class="stat-emoji">⚡</span>
           <div class="stat-bar">
             <div class="stat-fill energy" [style.width.%]="pet.stats.energy"></div>
           </div>
-          <span>{{ pet.stats.energy }}%</span>
+          <span class="stat-value">{{ pet.stats.energy }}%</span>
         </div>
 
       </div>
@@ -71,9 +177,67 @@
 
     </div>
   </div>
+
+  <div class="tips-section">
+    <div class="tips-header">
+      <div class="tips-decoration"></div>
+      <h3>Care Tips</h3>
+      <div class="tips-decoration"></div>
+    </div>
+    
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-number">01</div>
+        <p><strong>Monitor Stats:</strong> Keep all three stats above 50% for optimal pet happiness and health</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">02</div>
+        <p><strong>Earn Coins:</strong> Complete activities to earn coins for feeding, playing, and resting</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">03</div>
+        <p><strong>Balance Care:</strong> Rotate between feeding, playing, and resting to maintain all stats evenly</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-number">04</div>
+        <p><strong>Check Daily:</strong> Visit your pets regularly to prevent stats from dropping too low</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fun-facts">
+    <h3>Did You Know?</h3>
+    <div class="facts-grid">
+      <div class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 25 10 L 28 20 L 38 20 L 30 27 L 33 37 L 25 30 L 17 37 L 20 27 L 12 20 L 22 20 Z" fill="var(--accent-yellow)" opacity="0.3"/>
+          </svg>
+        </div>
+        <p>Pets with high happiness levels gain experience points faster</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="25" cy="25" r="15" fill="var(--primary-pink)" opacity="0.3"/>
+          </svg>
+        </div>
+        <p>Well-rested pets perform better in training activities</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="20" width="20" height="15" rx="2" fill="var(--secondary-cyan)" opacity="0.3"/>
+          </svg>
+        </div>
+        <p>Regular feeding prevents health stats from declining over time</p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <app-loading-spinner
   [loading]="loading"
-  message="Loading your pets...">
+  message="Loading Your Pets...">
 </app-loading-spinner>

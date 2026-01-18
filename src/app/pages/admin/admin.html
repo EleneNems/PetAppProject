@@ -1,45 +1,60 @@
+<app-loading-spinner
+  [loading]="loading"
+  message="Loading Admin Dashboard...">
+</app-loading-spinner>
 <div class="container">
   <div class="page-header">
-    <img src="navbar/settings icon.png" alt="">
-    <p>Manage pets and users</p>
+    <img src="navbar/settings icon.png" alt="Admin settings" />
+    <p>Monitor engagement, progression, and platform health</p>
   </div>
 
   <div class="admin-grid">
     <div class="card admin-card">
       <div class="admin-icon">👥</div>
       <h3>Total Users</h3>
-      <div class="admin-value">1,234</div>
-      <p>Active pet owners</p>
+      <div class="admin-value">
+        {{ stats?.users ?? '—' }}
+      </div>
+      <p>Registered pet owners</p>
     </div>
 
     <div class="card admin-card">
       <div class="admin-icon">🐾</div>
       <h3>Total Pets</h3>
-      <div class="admin-value">2,567</div>
-      <p>Virtual companions</p>
+      <div class="admin-value">
+        {{ stats?.pets ?? '—' }}
+      </div>
+      <p>Adopted companions</p>
     </div>
 
     <div class="card admin-card">
-      <div class="admin-icon">🏪</div>
-      <h3>Store Items</h3>
-      <div class="admin-value">48</div>
-      <p>Available products</p>
+      <div class="admin-icon">🔁</div>
+      <h3>Activities Completed</h3>
+      <div class="admin-value">
+        {{ stats?.activities ?? '—' }}
+      </div>
+      <p>Total quests finished</p>
     </div>
 
     <div class="card admin-card">
-      <div class="admin-icon">🪙</div>
-      <h3>Transactions</h3>
-      <div class="admin-value">15,890</div>
-      <p>Total purchases</p>
+      <div class="admin-icon">🧠</div>
+      <h3>Avg User Level</h3>
+      <div class="admin-value">
+        {{ stats?.avgLevel ?? '—' }}
+      </div>
+      <p>Progression balance</p>
     </div>
   </div>
 
   <div class="admin-actions">
     <h2>Quick Actions</h2>
+
     <div class="action-cards">
-      <button class="btn btn-primary">Add New Item</button>
-      <button class="btn btn-secondary">View All Users</button>
-      <button class="btn btn-accent">Generate Report</button>
+      <button class="btn btn-primary" routerLink="/admin/pets/add">🐾 Add Pets</button>
+
+      <button class="btn btn-secondary" routerLink="/admin/users">👥 View Users</button>
+
+      <button class="btn btn-accent" (click)="generateReport()">📊 Engagement Report</button>
     </div>
   </div>
 </div>
