@@ -2,59 +2,327 @@
   [loading]="loading"
   message="Loading Admin Dashboard...">
 </app-loading-spinner>
+
 <div class="container">
+  <div class="deco-animals">
+    <svg class="deco-bunny" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="65" rx="25" ry="30" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="35" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="65" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <circle cx="45" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+      <circle cx="55" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-cat" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="28" ry="25" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 25 45 L 35 25 L 45 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 75 45 L 65 25 L 55 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <circle cx="42" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+      <circle cx="58" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-dog" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="28" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="30" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="70" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <circle cx="43" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+      <circle cx="57" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+    </svg>
+  </div>
+
   <div class="page-header">
-    <img src="navbar/settings icon.png" alt="Admin settings" />
+    <div class="header-icon-wrapper">
+      <img src="navbar/settings icon.png" alt="Admin settings" />
+      <div class="icon-glow"></div>
+    </div>
+    <h1 class="page-title">Admin Dashboard</h1>
     <p>Monitor engagement, progression, and platform health</p>
+    
+    <div class="subtitle-section">
+      <div class="subtitle-line"></div>
+      <p class="subtitle-text">Real-time analytics & management</p>
+      <div class="subtitle-line"></div>
+    </div>
+  </div>
+
+  <div class="overview-section">
+    <h2 class="section-heading">Platform Overview</h2>
+    <p class="section-description">Key metrics at a glance</p>
   </div>
 
   <div class="admin-grid">
     <div class="card admin-card">
-      <div class="admin-icon">👥</div>
+      <div class="card-accent users-accent"></div>
+      <div class="admin-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="22" r="10" fill="none" stroke="var(--primary-pink)" stroke-width="2.5"/>
+          <path d="M 15 48 Q 15 35 30 35 Q 45 35 45 48" fill="none" stroke="var(--primary-pink)" stroke-width="2.5"/>
+        </svg>
+      </div>
       <h3>Total Users</h3>
       <div class="admin-value">
         {{ stats?.users ?? '—' }}
       </div>
       <p>Registered pet owners</p>
+      <div class="card-footer">
+        <span class="trend-up">+12% this week</span>
+      </div>
     </div>
 
     <div class="card admin-card">
-      <div class="admin-icon">🐾</div>
+      <div class="card-accent pets-accent"></div>
+      <div class="admin-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="35" rx="15" ry="12" fill="none" stroke="var(--secondary-cyan)" stroke-width="2.5"/>
+          <circle cx="25" cy="33" r="2" fill="var(--secondary-cyan)"/>
+          <circle cx="35" cy="33" r="2" fill="var(--secondary-cyan)"/>
+          <ellipse cx="20" cy="25" rx="5" ry="8" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+          <ellipse cx="40" cy="25" rx="5" ry="8" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+        </svg>
+      </div>
       <h3>Total Pets</h3>
       <div class="admin-value">
         {{ stats?.pets ?? '—' }}
       </div>
       <p>Adopted companions</p>
+      <div class="card-footer">
+        <span class="trend-up">+8% this week</span>
+      </div>
     </div>
 
     <div class="card admin-card">
-      <div class="admin-icon">🔁</div>
+      <div class="card-accent activities-accent"></div>
+      <div class="admin-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="20" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5"/>
+          <path d="M 30 15 L 30 30 L 42 30" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
       <h3>Activities Completed</h3>
       <div class="admin-value">
         {{ stats?.activities ?? '—' }}
       </div>
       <p>Total quests finished</p>
+      <div class="card-footer">
+        <span class="trend-up">+24% this week</span>
+      </div>
     </div>
 
     <div class="card admin-card">
-      <div class="admin-icon">🧠</div>
+      <div class="card-accent level-accent"></div>
+      <div class="admin-icon">
+        <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 30 10 L 35 25 L 50 25 L 38 35 L 43 50 L 30 40 L 17 50 L 22 35 L 10 25 L 25 25 Z" fill="none" stroke="var(--primary-pink)" stroke-width="2.5"/>
+        </svg>
+      </div>
       <h3>Avg User Level</h3>
       <div class="admin-value">
         {{ stats?.avgLevel ?? '—' }}
       </div>
       <p>Progression balance</p>
+      <div class="card-footer">
+        <span class="trend-neutral">Stable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-section">
+    <div class="section-header-admin">
+      <div class="header-decoration-admin"></div>
+      <h2>Analytics & Insights</h2>
+      <div class="header-decoration-admin"></div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="card chart-card">
+        <h3>Activity Distribution</h3>
+        <p class="chart-description">Breakdown of completed activities by type</p>
+        <div class="chart-container">
+          <div class="bar-chart">
+            <div class="bar-item">
+              <div class="bar-label">Feed</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 85%; background: var(--primary-pink);"></div>
+              </div>
+              <div class="bar-value">85%</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">Play</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 72%; background: var(--secondary-cyan);"></div>
+              </div>
+              <div class="bar-value">72%</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">Rest</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 68%; background: var(--accent-yellow);"></div>
+              </div>
+              <div class="bar-value">68%</div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label">Groom</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 45%; background: var(--primary-pink);"></div>
+              </div>
+              <div class="bar-value">45%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <h3>User Engagement</h3>
+        <p class="chart-description">Daily active users over the past week</p>
+        <div class="chart-container">
+          <div class="line-chart">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="37.5" x2="300" y2="37.5" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="75" x2="300" y2="75" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="112.5" x2="300" y2="112.5" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              
+              <polyline
+                points="0,100 50,80 100,70 150,85 200,60 250,50 300,45"
+                fill="none"
+                stroke="var(--secondary-cyan)"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+              
+              <polygon
+                points="0,100 50,80 100,70 150,85 200,60 250,50 300,45 300,150 0,150"
+                fill="var(--secondary-cyan)"
+                opacity="0.1"/>
+              
+              <circle cx="0" cy="100" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="50" cy="80" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="100" cy="70" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="150" cy="85" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="200" cy="60" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="250" cy="50" r="4" fill="var(--secondary-cyan)"/>
+              <circle cx="300" cy="45" r="4" fill="var(--secondary-cyan)"/>
+            </svg>
+          </div>
+          <div class="chart-labels">
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+            <span>Sun</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-icon-small">
+          <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 15 5 L 18 12 L 25 12 L 19 17 L 22 24 L 15 19 L 8 24 L 11 17 L 5 12 L 12 12 Z" fill="var(--accent-yellow)"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number">1,847</div>
+          <div class="stat-label">Achievements Unlocked</div>
+        </div>
+      </div>
+      
+      <div class="stat-box">
+        <div class="stat-icon-small">
+          <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="15" cy="15" r="12" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+            <circle cx="15" cy="15" r="5" fill="var(--primary-pink)"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number">92.4%</div>
+          <div class="stat-label">User Retention Rate</div>
+        </div>
+      </div>
+      
+      <div class="stat-box">
+        <div class="stat-icon-small">
+          <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="15" cy="15" r="12" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+            <path d="M 15 8 L 15 15 L 21 15" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-number">4.2h</div>
+          <div class="stat-label">Avg Session Time</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="admin-actions">
-    <h2>Quick Actions</h2>
+    <div class="actions-header">
+      <div class="actions-decoration"></div>
+      <h2>Quick Actions</h2>
+      <div class="actions-decoration"></div>
+    </div>
 
     <div class="action-cards">
-      <button class="btn btn-primary" routerLink="/admin/pets/add">🐾 Add Pets</button>
+      <button class="btn btn-primary action-btn" routerLink="/admin/pets/add">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 8 12 L 8 8 Q 8 4 12 4 L 16 4 Q 20 4 20 8 L 20 12" fill="none" stroke="currentColor" stroke-width="2"/>
+          <ellipse cx="14" cy="15" rx="7" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Add Pets</span>
+      </button>
 
-      <button class="btn btn-secondary" routerLink="/admin/users">👥 View Users</button>
+      <button class="btn btn-secondary action-btn" routerLink="/admin/manage-users">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M 6 20 Q 6 14 12 14 Q 18 14 18 20" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Manage Users</span>
+      </button>
 
-      <button class="btn btn-accent" (click)="generateReport()">📊 Engagement Report</button>
+      <button class="btn btn-accent action-btn" (click)="generateReport()">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="14" x2="14" y2="14" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Engagement Report</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="system-status">
+    <h3>System Status</h3>
+    <div class="status-grid">
+      <div class="status-item">
+        <div class="status-indicator status-healthy"></div>
+        <div class="status-info">
+          <div class="status-title">Server Health</div>
+          <div class="status-value">Optimal</div>
+        </div>
+      </div>
+      <div class="status-item">
+        <div class="status-indicator status-healthy"></div>
+        <div class="status-info">
+          <div class="status-title">Database</div>
+          <div class="status-value">Connected</div>
+        </div>
+      </div>
+      <div class="status-item">
+        <div class="status-indicator status-healthy"></div>
+        <div class="status-info">
+          <div class="status-title">API Response</div>
+          <div class="status-value">42ms avg</div>
+        </div>
+      </div>
+      <div class="status-item">
+        <div class="status-indicator status-warning"></div>
+        <div class="status-info">
+          <div class="status-title">Storage Used</div>
+          <div class="status-value">78% capacity</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

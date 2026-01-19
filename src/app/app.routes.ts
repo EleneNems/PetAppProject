@@ -8,6 +8,7 @@ import { AdminGuard } from './guard/admin.guard'
 import { Home } from './pages/home/home'
 import { PetActivities } from './pages/pet-activities/pet-activities'
 import { AddPetComponent } from './pages/admin/add-pet/add-pet'
+import { ManageUsersComponent } from './pages/admin/manage-users/manage-users'
 export const routes: Routes = [
   { path: '', component: Home },
 
@@ -19,6 +20,7 @@ export const routes: Routes = [
 
   { path: 'admin', component: Admin, canActivate: [AuthGuard, AdminGuard] },
   {path: 'admin/pets/add', component: AddPetComponent},
+  {path: 'admin/manage-users', component:ManageUsersComponent},
   
   { path: '**', redirectTo: '' }
 ]
