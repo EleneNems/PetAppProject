@@ -116,4 +116,9 @@ export class Home implements OnInit {
     this.showConfirm = false
     this.selectedPet = null
   }
+  
+  readMore(pet: any): void {
+    this.router.navigate(['/pets', pet.id]);
+  }
+
 }

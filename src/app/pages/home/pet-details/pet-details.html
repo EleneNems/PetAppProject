@@ -1,0 +1,28 @@
+<section class="pet-details-wrapper" *ngIf="!loading && pet">
+  <div class="pet-card">
+
+    <div class="image-wrapper">
+      <img [src]="pet.image" [alt]="pet.name" />
+    </div>
+
+    <div class="pet-info">
+      <h1>{{ pet.name }}</h1>
+      <span class="species">{{ pet.species }}</span>
+
+      <p class="description">
+        {{ pet.description }}
+      </p>
+
+      <div class="actions">
+        <button class="adopt-btn" routerLink="/my-pet">
+          Back to My Pets
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="loading" *ngIf="loading">
+  <p>Loading pet details...</p>
+</section>

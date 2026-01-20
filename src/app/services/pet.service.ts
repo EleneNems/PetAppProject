@@ -89,4 +89,7 @@ export class PetService {
       );
   }
 
+  getPetById(id: number) {
+    return this.http.get(`${this.apiUrl}/pets/${id}`);
+  }
 }

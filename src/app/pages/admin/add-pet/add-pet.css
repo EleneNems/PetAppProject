@@ -120,7 +120,6 @@
   font-weight: 600;
 }
 
-/* Form Section */
 .form-section {
   margin-bottom: 64px;
   position: relative;
@@ -244,7 +243,6 @@
   opacity: 0.5;
 }
 
-/* File Input */
 .file-input-wrapper {
   position: relative;
 }
@@ -296,7 +294,6 @@
   font-size: 15px;
 }
 
-/* Form Actions */
 .form-actions {
   display: flex;
   gap: 16px;
@@ -357,7 +354,6 @@
   box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
 }
 
-/* Message Alert */
 .message-alert {
   margin-top: 24px;
   padding: 14px 20px;
@@ -498,7 +494,6 @@
   box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
 }
 
-/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -561,7 +556,6 @@
   justify-content: center;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .pet-grid {
     grid-template-columns: 1fr;

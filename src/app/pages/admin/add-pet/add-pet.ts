@@ -25,7 +25,8 @@ export class AddPetComponent implements OnInit {
   constructor(private fb: FormBuilder, private adminService: AdminService) {
     this.petForm = this.fb.group({
       name: ['', Validators.required],
-      species: ['', Validators.required]
+      species: ['', Validators.required],
+      description: ['']
     });
   }
 
@@ -62,6 +63,8 @@ export class AddPetComponent implements OnInit {
     formData.append('name', this.petForm.value.name);
     formData.append('species', this.petForm.value.species);
     formData.append('image', this.selectedFile);
+    formData.append('description', this.petForm.value.description || '');
+
 
     this.adminService.uploadPet(formData).subscribe({
       next: res => {
@@ -71,7 +74,6 @@ export class AddPetComponent implements OnInit {
         this.loading = false;
         this.loadPets();
         
-        // Clear message after 3 seconds
         setTimeout(() => this.message = '', 3000);
       },
       error: err => {
@@ -89,7 +91,6 @@ export class AddPetComponent implements OnInit {
       species: pet.species
     });
     
-    // Scroll to form
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -114,7 +115,6 @@ export class AddPetComponent implements OnInit {
         this.loading = false;
         this.loadPets();
         
-        // Clear message after 3 seconds
         setTimeout(() => this.message = '', 3000);
       },
       error: err => {
@@ -148,7 +148,6 @@ export class AddPetComponent implements OnInit {
         this.petToDeleteId = null;
         this.message = 'Pet deleted successfully!';
         
-        // Clear message after 3 seconds
         setTimeout(() => this.message = '', 3000);
       },
       error: err => {

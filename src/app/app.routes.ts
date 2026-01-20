@@ -9,6 +9,7 @@ import { Home } from './pages/home/home'
 import { PetActivities } from './pages/pet-activities/pet-activities'
 import { AddPetComponent } from './pages/admin/add-pet/add-pet'
 import { ManageUsersComponent } from './pages/admin/manage-users/manage-users'
+import { PetDetails } from './pages/home/pet-details/pet-details'
 export const routes: Routes = [
   { path: '', component: Home },
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'my-pet', component: MyPet, canActivate: [AuthGuard] },
   { path: 'pet-activities', component: PetActivities, canActivate: [AuthGuard] },
   { path: 'pet-stats', component: PetStats, canActivate: [AuthGuard] },
+  { path: 'pets/:id', component: PetDetails, canActivate: [AuthGuard] },
 
   { path: 'admin', component: Admin, canActivate: [AuthGuard, AdminGuard] },
   {path: 'admin/pets/add', component: AddPetComponent},

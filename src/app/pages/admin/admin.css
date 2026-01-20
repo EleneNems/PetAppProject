@@ -78,7 +78,6 @@
   font-size: 18px;
 }
 
-/* Subtitle Section */
 .subtitle-section {
   display: flex;
   align-items: center;
@@ -119,7 +118,6 @@
   font-weight: 600;
 }
 
-/* Overview Section */
 .overview-section {
   text-align: center;
   margin-bottom: 32px;
@@ -139,7 +137,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Admin Grid */
 .admin-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -166,7 +163,6 @@
     0 0 30px rgba(87, 217, 245, 0.2);
 }
 
-/* Card Accents */
 .card-accent {
   position: absolute;
   top: 0;
@@ -195,7 +191,6 @@
   box-shadow: 0 0 10px rgba(255, 143, 171, 0.5);
 }
 
-/* Admin Icons */
 .admin-icon {
   width: 64px;
   height: 64px;
@@ -231,7 +226,6 @@
   margin: 0 0 12px 0;
 }
 
-/* Card Footer */
 .card-footer {
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -249,7 +243,6 @@
   font-weight: 600;
 }
 
-/* Analytics Section */
 .analytics-section {
   margin-top: 64px;
   position: relative;
@@ -294,7 +287,6 @@
   margin: 0;
 }
 
-/* Charts Grid */
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -324,7 +316,6 @@
   width: 100%;
 }
 
-/* Bar Chart */
 .bar-chart {
   display: flex;
   flex-direction: column;
@@ -380,7 +371,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Line Chart */
 .line-chart {
   width: 100%;
   margin-bottom: 12px;
@@ -403,7 +393,6 @@
   font-weight: 600;
 }
 
-/* Stats Row */
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -455,7 +444,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Admin Actions */
 .admin-actions {
   margin-top: 64px;
   position: relative;
@@ -529,7 +517,6 @@
   height: 20px;
 }
 
-/* System Status */
 .system-status {
   margin-top: 64px;
   padding: 32px;
@@ -596,7 +583,6 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .admin-grid {
     grid-template-columns: 1fr;

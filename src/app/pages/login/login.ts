@@ -31,13 +31,11 @@ export class Login {
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/my-pet';
 
-    // Login form
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
-    // Register form
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -58,7 +56,6 @@ export class Login {
     this.submitted = false;
   }
 
-  // ---------- LOGIN ----------
   onLoginSubmit(): void {
     this.submitted = true;
     this.errorMessage = '';
@@ -110,7 +107,6 @@ export class Login {
     });
   }
 
-  // ---------- GETTERS ----------
   get loginEmail() { return this.loginForm.get('email'); }
   get loginPassword() { return this.loginForm.get('password'); }
 
