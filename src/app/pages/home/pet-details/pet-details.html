@@ -1,28 +1,236 @@
-<section class="pet-details-wrapper" *ngIf="!loading && pet">
-  <div class="pet-card">
+<app-loading-spinner
+  [loading]="loading"
+  message="Loading pet details...">
+</app-loading-spinner>
 
-    <div class="image-wrapper">
-      <img [src]="pet.image" [alt]="pet.name" />
+<div class="container" *ngIf="!loading && pet">
+  
+  <div class="deco-animals">
+    <svg class="deco-bunny" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="65" rx="25" ry="30" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="35" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <ellipse cx="65" cy="35" rx="8" ry="20" fill="var(--primary-pink)" opacity="0.15"/>
+      <circle cx="45" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+      <circle cx="55" cy="65" r="3" fill="var(--primary-pink)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-cat" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="28" ry="25" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 25 45 L 35 25 L 45 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <path d="M 75 45 L 65 25 L 55 45 Z" fill="var(--secondary-cyan)" opacity="0.15"/>
+      <circle cx="42" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+      <circle cx="58" cy="58" r="3" fill="var(--secondary-cyan)" opacity="0.2"/>
+    </svg>
+    
+    <svg class="deco-dog" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="50" cy="60" rx="30" ry="28" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="30" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <ellipse cx="70" cy="50" rx="12" ry="18" fill="var(--accent-yellow)" opacity="0.15"/>
+      <circle cx="43" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+      <circle cx="57" cy="60" r="3" fill="var(--accent-yellow)" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a routerLink="" class="breadcrumb-link">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 15 18 L 9 12 L 15 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to My Pets
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">{{ pet.name }}</span>
     </div>
+  </div>
 
-    <div class="pet-info">
-      <h1>{{ pet.name }}</h1>
-      <span class="species">{{ pet.species }}</span>
+  <div class="pet-details-card">
+    <div class="card-glow"></div>
+    
+    <div class="pet-image-section">
+      <div class="image-frame">
+        <div class="image-decoration top-left"></div>
+        <div class="image-decoration top-right"></div>
+        <div class="image-decoration bottom-left"></div>
+        <div class="image-decoration bottom-right"></div>
+        
+        <div class="image-wrapper">
+          <img [src]="pet.image" [alt]="pet.name" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
 
-      <p class="description">
-        {{ pet.description }}
-      </p>
-
-      <div class="actions">
-        <button class="adopt-btn" routerLink="/my-pet">
-          Back to My Pets
-        </button>
+      <div class="stats-badges">
+        <div class="stat-badge">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 12 2 L 15 8 L 22 9 L 17 14 L 18 21 L 12 18 L 6 21 L 7 14 L 2 9 L 9 8 Z" fill="currentColor"/>
+          </svg>
+          <span>Premium</span>
+        </div>
+        <div class="stat-badge">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 12 21 Q 4 16 4 9 Q 4 5 7 3 Q 10 1 12 3 Q 14 1 17 3 Q 20 5 20 9 Q 20 16 12 21 Z" fill="currentColor"/>
+          </svg>
+          <span>Loved</span>
+        </div>
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="pet-info-section">
+      <div class="pet-header">
+        <div class="pet-title-group">
+          <h1 class="pet-name">{{ pet.name }}</h1>
+          <div class="species-badge">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="12" cy="14" rx="6" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="10" cy="13" r="1" fill="currentColor"/>
+              <circle cx="14" cy="13" r="1" fill="currentColor"/>
+              <ellipse cx="8" cy="9" rx="2" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <ellipse cx="16" cy="9" rx="2" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            {{ pet.species }}
+          </div>
+        </div>
+      </div>
 
-<section class="loading" *ngIf="loading">
-  <p>Loading pet details...</p>
-</section>
+      <div class="pet-attributes">
+        <div class="attribute-card">
+          <div class="attribute-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+              <path d="M 8 12 L 11 15 L 16 9" stroke="var(--primary-pink)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="attribute-info">
+            <div class="attribute-label">Health</div>
+            <div class="attribute-value">Excellent</div>
+          </div>
+        </div>
+
+        <div class="attribute-card">
+          <div class="attribute-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 12 21 Q 4 16 4 9 Q 4 5 7 3 Q 10 1 12 3 Q 14 1 17 3 Q 20 5 20 9 Q 20 16 12 21 Z" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="attribute-info">
+            <div class="attribute-label">Happiness</div>
+            <div class="attribute-value">Very Happy</div>
+          </div>
+        </div>
+
+        <div class="attribute-card">
+          <div class="attribute-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 12 2 L 15 8 L 22 9 L 17 14 L 18 21 L 12 18 L 6 21 L 7 14 L 2 9 L 9 8 Z" fill="none" stroke="var(--accent-yellow)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="attribute-info">
+            <div class="attribute-label">Energy</div>
+            <div class="attribute-value">Energetic</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="description-section">
+        <div class="section-title">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+            <line x1="8" y1="10" x2="16" y2="10" stroke="var(--primary-pink)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="14" x2="14" y2="14" stroke="var(--primary-pink)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          About {{ pet.name }}
+        </div>
+        <p class="description-text">{{ pet.description }}</p>
+      </div>
+
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M 12 6 L 12 12 L 16 14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="quick-stat-info">
+            <div class="quick-stat-label">Time with you</div>
+            <div class="quick-stat-value">Forever Friend</div>
+          </div>
+        </div>
+
+        <div class="quick-stat">
+          <div class="quick-stat-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 12 2 L 15 8 L 22 9 L 17 14 L 18 21 L 12 18 L 6 21 L 7 14 L 2 9 L 9 8 Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="quick-stat-info">
+            <div class="quick-stat-label">Favorite Activity</div>
+            <div class="quick-stat-value">Playing & Cuddling</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" routerLink="/my-pet">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 15 18 L 9 12 L 15 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to My Pets
+        </button>
+        
+        <button class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 12 21 Q 4 16 4 9 Q 4 5 7 3 Q 10 1 12 3 Q 14 1 17 3 Q 20 5 20 9 Q 20 16 12 21 Z" fill="currentColor"/>
+          </svg>
+          Care for {{ pet.name }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="fun-facts-section">
+    <div class="section-header-admin">
+      <div class="header-decoration-admin"></div>
+      <h2>Did You Know?</h2>
+      <div class="header-decoration-admin"></div>
+    </div>
+
+    <div class="fun-facts-grid">
+      <div class="fun-fact-card">
+        <div class="fun-fact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="var(--primary-pink)" stroke-width="2"/>
+            <path d="M 8 15 Q 12 18 16 15" stroke="var(--primary-pink)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="9" cy="10" r="1.5" fill="var(--primary-pink)"/>
+            <circle cx="15" cy="10" r="1.5" fill="var(--primary-pink)"/>
+          </svg>
+        </div>
+        <h3>Always Happy</h3>
+        <p>{{ pet.name }} loves spending time with you and always greets you with joy!</p>
+      </div>
+
+      <div class="fun-fact-card">
+        <div class="fun-fact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 12 2 L 15 8 L 22 9 L 17 14 L 18 21 L 12 18 L 6 21 L 7 14 L 2 9 L 9 8 Z" fill="var(--accent-yellow)"/>
+          </svg>
+        </div>
+        <h3>Special Bond</h3>
+        <p>Your {{ pet.species }} has formed a unique connection with you that grows stronger every day.</p>
+      </div>
+
+      <div class="fun-fact-card">
+        <div class="fun-fact-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="var(--secondary-cyan)" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3" fill="var(--secondary-cyan)"/>
+            <path d="M 12 3 L 12 6 M 12 18 L 12 21 M 3 12 L 6 12 M 18 12 L 21 12" stroke="var(--secondary-cyan)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Full of Energy</h3>
+        <p>Regular play sessions keep {{ pet.name }} healthy, happy, and full of life!</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,9 +2,11 @@ import { Component, OnInit  } from '@angular/core';
 import { PetService } from '../../../services/pet.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { LoadingSpinner } from '../../../loading-spinner/loading-spinner';
 @Component({
   selector: 'app-pet-details',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, LoadingSpinner],
   templateUrl: './pet-details.html',
   styleUrl: './pet-details.css',
 })
